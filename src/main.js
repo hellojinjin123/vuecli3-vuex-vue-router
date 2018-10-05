@@ -1,3 +1,6 @@
+/*
+* v1.0.0
+* */
 import Vue from 'vue'
 import router from './router'
 import store from './store'
