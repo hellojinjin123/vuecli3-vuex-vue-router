@@ -20,13 +20,18 @@ Vue.prototype.mui = mui
 Vue.prototype.root = 'http://www.24jyun.com/apicode/i.php?img='
 
 // mint-ui]
-import { Header, Tabbar,TabItem,Swipe, SwipeItem,Loadmore} from 'mint-ui'
-Vue.component(Header.name, Header);
-Vue.component(Tabbar.name, Tabbar);
-Vue.component(TabItem.name, TabItem);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Loadmore.name, Loadmore);
+import { Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell } from 'mint-ui'
+
+Vue.component(Cell.name, Cell);
+Vue.component(Header.name, Header)
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
+Vue.component(Loadmore.name, Loadmore)
+Vue.component(Navbar.name, Navbar)
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
 
 // 引入全局scss
 import './css/index.scss'

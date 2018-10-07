@@ -1,6 +1,27 @@
 <template>
-  <div class="index-container">
-    <List></List>
+  <div id="index-container">
+    <mt-navbar v-model="selected" fixed ref="mtNavbar">
+      <mt-tab-item id="1">热门</mt-tab-item>
+      <mt-tab-item id="2">最新</mt-tab-item>
+      <mt-tab-item id="3">社圈</mt-tab-item>
+      <mt-tab-item id="4">能值</mt-tab-item>
+    </mt-navbar>
+
+    <!-- tab-container -->
+    <mt-tab-container v-model="selected">
+      <mt-tab-container-item id="1">
+        <List></List>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="2">
+        <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+      </mt-tab-container-item>
+      <mt-tab-container-item id="3">
+        <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+      </mt-tab-container-item>
+      <mt-tab-container-item id="4">
+        <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+      </mt-tab-container-item>
+    </mt-tab-container>
   </div>
 </template>
 
@@ -8,16 +29,46 @@
   import List from '../news/List'
   export default {
     data() {
-      return{}
+      return{
+        selected: '1'
+      }
     },
+    props: ['route'],
     components: {
       List
+    },
+    mounted() {
+      // console.log(this.route)
     }
   }
 </script>
 
-<style scoped lang="scss">
-  .index-container{
+<style  lang="scss">
+
+  #index-container{
+    position: absolute;
+    padding-top: r(80);
     padding-bottom: r(63);
+    .mint-navbar{
+      height: r(32);
+
+      background: url(../../images/bg.png) right repeat-x;
+      &.is-fixed{
+        top: r(48);
+      }
+      .mint-tab-item{
+        color: #9b9b9b;
+        padding: 0;
+        &.is-selected{
+          border-bottom: 3px solid $c1;
+        }
+        .mint-tab-item-label {
+          color: inherit;
+          font-size: r(16);
+          line-height: r(32)
+        }
+      }
+
+    }
   }
 </style>

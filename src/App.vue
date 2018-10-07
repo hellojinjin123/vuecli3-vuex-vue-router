@@ -4,7 +4,7 @@
     <mt-header fixed title="社区广场"></mt-header>
     <!--main container router-view-->
     <transition>
-      <router-view></router-view>
+      <router-view :route="routeFlag" ref="container"></router-view>
     </transition>
     <!--footer-->
     <mt-tabbar v-model="selected">
@@ -36,6 +36,49 @@
 
 <script>
   export default {
+    methods: {
+      beforeEnter: function (el) {
+        // ...
+        el.style.opacity = 0
+        el.style.transform = 'translateX(100%)'
+        console.log(this.$refs.container.$refs.mtNavbar)
+        // if(this.$refs.container.$refs.mtNavbar) this.$refs.container.$refs.mtNavbar.$el.style.top = 0
+
+        // el.style.position = 'absolute'
+      },
+      // 当与 CSS 结合使用时
+      // 回调函数 done 是可选的
+      enter: function (el, done) {
+        // ...
+        el.offsetWidth;
+        el.style.opacity = 1
+        el.style.transition = 'all 1s'
+        el.style.transform = 'translateX(0)'
+        done()
+      },
+      afterEnter: function (el) {
+        // ...
+      },
+      beforeLeave: function (el) {
+        // ...
+        el.style.opacity = 1
+        // el.style.transform = 'translateX(0)'
+      },
+      // 当与 CSS 结合使用时
+      // 回调函数 done 是可选的
+      leave: function (el, done) {
+        // ...
+        // el.offsetWidth;
+        el.style.opacity = 0
+        // el.style.transform = 'translateX(-100%)'
+        el.style.transition = 'all 1s'
+        done()
+      },
+      afterLeave: function (el) {
+        // ...
+
+      }
+    },
     data() {
       return {
         selected: '',
@@ -44,7 +87,8 @@
           {love: false},
           {home: false},
           {user: false},
-        ]
+        ],
+        routeFlag: false
       }
     },
     watch: {
@@ -66,10 +110,16 @@
             this.flag.user = true
             this.flag.p24 = this.flag.love = this.flag.home = false
         }
+      },
+      '$route.path' (nVal, oVal) {
+        this.routeFlag = true
+        // console.log(this.routeFlag)
       }
     },
     mounted() {
       this.selected = '首页'
+      // this.$refs.container.$refs.mtNavbar.$el.style.top = 0
+      // console.log(this.$refs.container.$refs.mtNavbar)
     },
   }
 </script>
