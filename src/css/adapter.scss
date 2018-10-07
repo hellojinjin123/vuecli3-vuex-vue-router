@@ -1,0 +1,7 @@
+@for $i from length($deviceList) through 1 {
+  @media (min-width: nth($deviceList, $i)) {
+    html {
+      font-size: $bsFontSize / $designWidth *nth($deviceList, $i);
+    }
+  }
+}
