@@ -1,6 +1,6 @@
 <template>
   <div class="news-list">
-    <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+    <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"  ref="loadmore">
       <ul>
         <!--这里放置真实显示的DOM内容-->
         <li class="mui-table-view-cell mui-media" v-for="item in list" >
@@ -20,6 +20,11 @@
           <div class="news-list-title">{{item.title}}</div>
           <a href="" class="news-list-link"><img :src="getFirstPic(item.pic)" alt=""></a>
         </li>
+        <!--没有更多数据-->
+        <li class="mui-table-view-cell mui-media" v-if="allLoaded">
+          <div class="icon-nomore"></div>
+          <div class="nomore">这里还是空空如也..</div>
+        </li>
       </ul>
     </mt-loadmore>
   </div>
@@ -33,7 +38,7 @@
     data () {
       return {
         page: 1,
-        pageNum: 10,
+        pageNum: 1,
         list: [],
         allLoaded: false
       }
@@ -58,22 +63,15 @@
         if(picData instanceof Array && picData[0]) return this.root + picData[0]
         return this.root + picData
       },
-      loadTop(id) {
+      loadBottom() {
         // 加载更多数据
-        this.$broadcast('onTopLoaded', id);
-      },
-      loadBottom(id) {
-        // 加载更多数据
-        console.log('load')
+        var that = this
         this.getList(function (data) {
-          console.log(data.res)
-          if(data.msg == -1){
-            console.log(this)
-            // this.allLoaded = true;// 若数据已全部获取完毕
+          if(data.res != 1){
+            that.allLoaded = true;// 若数据已全部获取完毕
+            that.$refs.loadmore.onBottomLoaded();
           }
         })
-
-        // this.$broadcast('onBottomLoaded', id);
       }
     },
     filters: {
@@ -103,6 +101,18 @@
       padding: 11px 12px;
       margin-bottom: 6px;
       background: #fff;
+      .icon-nomore{
+        width: r(96);
+        height: r(96);
+        background: url(../../images/nomore.png) no-repeat;
+        background-size: contain;
+        margin: 0 auto;
+      }
+      .nomore{
+        text-align: center;
+        color: #696867;
+        font-size: 16px;
+      }
       .mui-media-object{
         width: r(48);
         height: r(48);
