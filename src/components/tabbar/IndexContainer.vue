@@ -10,10 +10,10 @@
     <!-- tab-container -->
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
-        <List></List>
+        <List :type="'hot'"></List>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+        <List :type="'new'"></List>
       </mt-tab-container-item>
       <mt-tab-container-item id="3">
         <mt-cell v-for="n in 6" :title="'选项 ' + n" />

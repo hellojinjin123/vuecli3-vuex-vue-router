@@ -5,7 +5,7 @@
         <!--这里放置真实显示的DOM内容-->
         <li class="mui-table-view-cell mui-media" v-for="item in list" >
           <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" :src="root+item.face">
+            <img class="mui-media-object mui-pull-left" :src="getFace(item.face)">
             <div class="mui-media-body">
               <div class="clearfix mui-media-body-title">
                 <div class="clearfix">
@@ -35,10 +35,11 @@
   import { loadmore} from 'mint-ui'
   export default {
     name: 'newslist',
+    props:['type'],
     data () {
       return {
         page: 1,
-        pageNum: 1,
+        pageNum: 3,
         list: [],
         allLoaded: false
       }
@@ -46,7 +47,7 @@
     methods: {
       getList(callback) {
         this.$http
-          .get('activity/grouplist?type=hot&p='+this.page+'&page_num='+this.pageNum)
+          .get('activity/grouplist?type='+this.type+'&p='+this.page+'&page_num='+this.pageNum)
           .then(response => {
             // success callback
             if(response.body.res == 1){// 获得数据
@@ -62,6 +63,10 @@
       getFirstPic(picData) {
         if(picData instanceof Array && picData[0]) return this.root + picData[0]
         return this.root + picData
+      },
+      getFace(face) {
+        if(!face) return 'http://www.24jyun.com/24jia/i.php?v=2016050129022&it=1&bd=common&img=cmtx_02'
+        return this.root+face
       },
       loadBottom() {
         // 加载更多数据
@@ -83,7 +88,10 @@
         }else{
           return '其他'
         }
-      }
+      },
+    },
+    computed:{
+
     },
     created() {
       this.getList()
@@ -155,7 +163,7 @@
         float: right;
         width: r(64);
         height: r(32);
-        line-height: r(32);
+        line-height: r(33);
         font-size: r(13);
         text-align: center;
         color: #fff;
