@@ -22,7 +22,6 @@ module.exports = {
     plugins: [
       new webpack.ProvidePlugin({
         mui: "mui",
-        "window.mui": "mui"
       })
     ]
   },
@@ -60,9 +59,9 @@ module.exports = {
   pwa: {},
   // webpack-dev-server 相关配置
   devServer: {
-    open: true,
+    open: false,
     host: '0.0.0.0',
-    port: 8080,
+    port: 3001,
     https: false,
     hotOnly: true,
     proxy: null, // 设置代理

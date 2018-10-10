@@ -1,13 +1,18 @@
 <template>
   <div class="home-container">
     <h1>home</h1>
+
+      <mui-numbox></mui-numbox>
   </div>
 
 </template>
 
 <script>
+  import muiNumbox from '../subcomponents/muiNumbox'
   export default {
-
+      components:{
+        muiNumbox
+      }
   }
 </script>
 

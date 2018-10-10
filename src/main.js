@@ -14,13 +14,16 @@ Vue.http.options.root = 'http://www.24jyun.com/apicode/htapi';
 Vue.config.productionTip = false
 
 // mui
-import mui from './assets/mui/js/mui.js'
-import '@/assets/mui/css/mui.css'
-Vue.prototype.mui = mui
+// import mui from './assets/mui/js/mui.js'
+// import '@/assets/mui/css/mui.css'
+// Vue.prototype.mui = mui
+
+
+
 Vue.prototype.root = 'http://www.24jyun.com/apicode/i.php?img='
 
 // mint-ui]
-import { Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell } from 'mint-ui'
+import { Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell,Field } from 'mint-ui'
 
 Vue.component(Cell.name, Cell);
 Vue.component(Header.name, Header)
@@ -32,6 +35,7 @@ Vue.component(Loadmore.name, Loadmore)
 Vue.component(Navbar.name, Navbar)
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
+Vue.component(Field.name, Field);
 
 // 引入全局scss
 import './css/index.scss'
@@ -39,7 +43,7 @@ import './css/index.scss'
 
 import App from './App.vue'
 
-new Vue({
+const vm = new Vue({
   el: '#app',
   router,
   // store,
