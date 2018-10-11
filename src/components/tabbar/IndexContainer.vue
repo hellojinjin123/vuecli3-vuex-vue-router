@@ -48,7 +48,7 @@
   #index-container{
     position: absolute;
     padding-top: 80px;
-    padding-bottom: 63;
+    padding-bottom: 63px;
     .mint-navbar{
       height: 32px;
 
