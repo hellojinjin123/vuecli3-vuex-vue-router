@@ -1,6 +1,6 @@
 <template>
   <div class="news-list">
-    <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"  ref="loadmore">
+    <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
       <ul>
         <!--这里放置真实显示的DOM内容-->
         <li class="mui-table-view-cell mui-media" v-for="item in list" >
@@ -39,7 +39,7 @@
     data () {
       return {
         page: 1,
-        pageNum: 3,
+        pageNum: 1,
         list: [],
         allLoaded: false
       }
@@ -71,12 +71,13 @@
       loadBottom() {
         // 加载更多数据
         var that = this
-        this.getList(function (data) {
-          if(data.res != 1){
-            that.allLoaded = true;// 若数据已全部获取完毕
-            that.$refs.loadmore.onBottomLoaded();
-          }
-        })
+        console.log('loadone')
+        // this.getList(function (data) {
+        //   if(data.res != 1){
+        //     that.allLoaded = true;// 若数据已全部获取完毕
+        //     that.$refs.loadmore.onBottomLoaded();
+        //   }
+        // })
       }
     },
     filters: {
@@ -89,9 +90,6 @@
           return '其他'
         }
       },
-    },
-    computed:{
-
     },
     created() {
       this.getList()
