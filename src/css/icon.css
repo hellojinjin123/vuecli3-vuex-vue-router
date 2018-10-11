@@ -1,0 +1,33 @@
+/**
+ * Created by jmh on 2018/10/11.
+ */
+.icon-forward{
+  background: url(../images/forward.png) no-repeat;
+  background-size: contain;
+}
+/*设置*/
+.icon-sz-01{
+  background: url(../images/sz_01.png) no-repeat;
+  background-size: contain;
+}
+.icon-sz-02{
+  background: url(../images/sz_02.png) no-repeat;
+  background-size: contain;
+}
+.icon-sz-03{
+  background: url(../images/sz_03.png) no-repeat;
+  background-size: contain;
+}
+.icon-sz-04{
+  background: url(../images/sz_04.png) no-repeat;
+  background-size: contain;
+}
+.icon-sz-05{
+  background: url(../images/sz_05.png) no-repeat;
+  background-size: contain;
+}
+/*登录*/
+.icon-err{
+  background: url(../images/x.png) no-repeat;
+  background-size: contain;
+}

@@ -47,14 +47,14 @@
 
   #index-container{
     position: absolute;
-    padding-top: r(80);
-    padding-bottom: r(63);
+    padding-top: 80px;
+    padding-bottom: 63;
     .mint-navbar{
-      height: r(32);
+      height: 32px;
 
       background: url(../../images/bg.png) right repeat-x;
       &.is-fixed{
-        top: r(48);
+        top: 48px;
       }
       .mint-tab-item{
         color: #9b9b9b;
@@ -64,8 +64,8 @@
         }
         .mint-tab-item-label {
           color: inherit;
-          font-size: r(16);
-          line-height: r(32)
+          font-size: 16px;
+          line-height: 32px;
         }
       }
 

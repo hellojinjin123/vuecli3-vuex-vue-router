@@ -50,6 +50,13 @@ body{
   font-family: '宋体',tahoma, Srial, helvetica, sans-serif;
   background-color: #eee;
 }
+input::-webkit-input-placeholder {
+  /* placeholder颜色  */
+  color: $c2;
+  /* placeholder字体大小  */
+  //font-size: 16px;
+}
+
 /*vue*/
 .v-enter{
   opacity: 0;

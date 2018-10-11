@@ -42,7 +42,10 @@ module.exports = {
       sass: {
         // @/ 是 src/ 的别名
         // 所以这里假设你有 `src/variables.scss` 这个文件
-        data: `@import "@/css/index.scss";`
+        data: `
+          @import "@/css/index.scss";
+          @import "@/css/base.scss";
+        `
       }
     },
     // 启用 CSS modules for all css / pre-processor files.
@@ -50,7 +53,7 @@ module.exports = {
   },
   // use thread-loader for babel & TS in production build
   // enabled by default if the machine has more than 1 cores
-  parallel: require('os').cpus().length > 1,
+  // parallel: require('os').cpus().length > 1,
   // 是否启用dll
   // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
   // dll: false,

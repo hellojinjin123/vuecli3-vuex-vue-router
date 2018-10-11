@@ -175,15 +175,7 @@
         margin-left: 5px;
       }
     }
-    .mui-scroll-wrapper{
-      height: 100%;
-      padding-top: r(48);
-      padding-bottom: r(63);
-      .mui-scroll{
-        margin-bottom: r(100);
-        margin-top: -40px;
-      }
-    }
+
 
   }
 </style>

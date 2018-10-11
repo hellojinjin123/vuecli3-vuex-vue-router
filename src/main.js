@@ -5,7 +5,7 @@
 * */
 import Vue from 'vue'
 import router from './router'
-// import store from './store'
+import store from './store'
 import './registerServiceWorker'
 import Resource from 'vue-resource'
 
@@ -18,12 +18,14 @@ Vue.config.productionTip = false
 // import '@/assets/mui/css/mui.css'
 // Vue.prototype.mui = mui
 
-
+// fastclick
+import FastClick from 'fastclick'
+FastClick.attach(document.body);
 
 Vue.prototype.root = 'http://www.24jyun.com/apicode/i.php?img='
 
 // mint-ui]
-import { Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell,Field } from 'mint-ui'
+import { Toast ,Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell,Field,Button } from 'mint-ui'
 
 Vue.component(Cell.name, Cell);
 Vue.component(Header.name, Header)
@@ -36,9 +38,11 @@ Vue.component(Navbar.name, Navbar)
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Field.name, Field);
+Vue.component(Button.name, Button);
 
 // 引入全局scss
 import './css/index.scss'
+import './css/icon.css'
 
 
 import App from './App.vue'
@@ -46,6 +50,6 @@ import App from './App.vue'
 const vm = new Vue({
   el: '#app',
   router,
-  // store,
+  store,
   render: h => h(App)
 })

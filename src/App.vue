@@ -1,13 +1,18 @@
 <template>
   <div class="p24-container">
     <!--header-->
-    <mt-header fixed title="社区广场"></mt-header>
+    <mt-header fixed :title="title" v-if="show">
+      <a href="" slot="left" @click.prevent="$router.go(-1)">
+        <mt-button icon="back" v-if="showBackBtn">返回</mt-button>
+      </a>
+    </mt-header>
+
     <!--main container router-view-->
     <transition>
       <router-view :route="routeFlag" ref="container"></router-view>
     </transition>
     <!--footer-->
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" v-if="showFooterTab">
       <mt-tab-item id="首页" href="#/index">
         <img slot="icon" src="./images/24.png" v-show="!flag.p24">
         <img slot="icon" src="./images/24ing.png" v-show="flag.p24">
@@ -36,59 +41,65 @@
 
 <script>
   export default {
-    methods: {
-      beforeEnter: function (el) {
-        // ...
-        el.style.opacity = 0
-        el.style.transform = 'translateX(100%)'
-        console.log(this.$refs.container.$refs.mtNavbar)
-        // if(this.$refs.container.$refs.mtNavbar) this.$refs.container.$refs.mtNavbar.$el.style.top = 0
-
-        // el.style.position = 'absolute'
-      },
-      // 当与 CSS 结合使用时
-      // 回调函数 done 是可选的
-      enter: function (el, done) {
-        // ...
-        el.offsetWidth;
-        el.style.opacity = 1
-        el.style.transition = 'all 1s'
-        el.style.transform = 'translateX(0)'
-        done()
-      },
-      afterEnter: function (el) {
-        // ...
-      },
-      beforeLeave: function (el) {
-        // ...
-        el.style.opacity = 1
-        // el.style.transform = 'translateX(0)'
-      },
-      // 当与 CSS 结合使用时
-      // 回调函数 done 是可选的
-      leave: function (el, done) {
-        // ...
-        // el.offsetWidth;
-        el.style.opacity = 0
-        // el.style.transform = 'translateX(-100%)'
-        el.style.transition = 'all 1s'
-        done()
-      },
-      afterLeave: function (el) {
-        // ...
-
-      }
-    },
     data() {
       return {
         selected: '',
+        title: '',
         flag:[
           {p24: true},
           {love: false},
           {home: false},
           {user: false},
         ],
-        routeFlag: false
+        routeFlag: false,
+        show: true,
+        showBackBtn: false,
+        showFooterTab: true,
+      }
+    },
+    methods: {
+      /*
+        * header: show
+        * btn in header: showBackBtn
+        * title in header: title
+        * showFooterTab:  footer tab
+        * */
+      routerWatch(nVal,oVal) {
+        // 默认设置
+        this.show = true
+        this.showBackBtn = false
+        this.showFooterTab = true
+        // 路由个性设定
+        switch (nVal) {
+          case '/todo':
+            this.title += '-'+this.$route.params.subTitle
+            this.showBackBtn = true
+            this.showFooterTab = false
+            break
+          case '/login':
+            this.show = false
+            break
+          case '/index':
+            this.title = '社区广场'
+            break
+          case '/service':
+            this.title = '社区服务'
+            break
+          case '/home':
+            this.title = '我家'
+            break
+          case '/user':
+            this.show = false
+            this.title = '用户中心'
+            break
+          case '/stCenter':
+            this.title = '设置'
+            this.showBackBtn = true
+            this.showFooterTab = false
+            break
+          default:
+            this.showBackBtn = false
+        }
       }
     },
     watch: {
@@ -112,15 +123,33 @@
         }
       },
       '$route.path' (nVal, oVal) {
-        this.routeFlag = true
-        // console.log(this.routeFlag)
+        this.routerWatch(nVal, oVal)
       }
+    },
+    created() {
+      this.$router.push('/')
+
     },
     mounted() {
       this.selected = '首页'
-      // this.$refs.container.$refs.mtNavbar.$el.style.top = 0
-      // console.log(this.$refs.container.$refs.mtNavbar)
-    },
+      this.title = '社区广场'
+
+
+      document.addEventListener('touchstart',function (event) {
+        if(event.touches.length>1){
+          event.preventDefault();
+        }
+      })
+      var lastTouchEnd=0;
+      document.addEventListener('touchend',function (event) {
+        var now=(new Date()).getTime();
+        if(now-lastTouchEnd<=300){
+          event.preventDefault();
+        }
+        lastTouchEnd=now;
+      },false)
+    }
+
   }
 </script>
 
@@ -129,16 +158,16 @@
     &.is-fixed{
       z-index: 9999;
     }
-    height: r(48);
+    height: 48px;
     background: url(images/bg.png) center repeat-x;
     .mint-header-title{
-      font-size: r(16);
+      font-size: 16px;
       font-weight: 600;
     }
   }
   .mint-tabbar{
     position: fixed;
-    height: r(63);
+    height: 63px;
     min-height: 63px;
     background: url(images/bg.png) center repeat-x;
     z-index: 9999;
@@ -150,24 +179,31 @@
       text-align: center;
       color: $c2;
       img{
-        width: r(24);
-        height: r(24);
+        width: 24px;
+        height: 24px;
       }
       .mint-tab-item-icon {
-        width: r(24);
-        height: r(24);
-        margin: 0 auto r(5);
+        width: 24px;
+        height: 24px;
+        margin: 0 auto 5px;
       }
       .mint-tab-item-label{
         display: inline-block;
         /*padding-top: r(10);*/
         /*padding-left: r(7);*/
-        font-size: r(12);
+        font-size: 12px;
         letter-spacing: 1px;
       }
     }
   }
-
+  .icon-success{
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    background: url(images/nomore.png) no-repeat;
+    background-size: contain;
+  }
 
 </style>
 
