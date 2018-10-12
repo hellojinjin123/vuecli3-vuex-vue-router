@@ -71,19 +71,16 @@
         this.showFooterTab = true
         // 路由个性设定
         switch (nVal) {
-          case '/todo':
-            this.title += '-'+this.$route.params.subTitle
-            this.showBackBtn = true
-            this.showFooterTab = false
-            break
-          case '/login':
-            this.show = false
-            break
           case '/index':
             this.title = '社区广场'
             break
           case '/service':
             this.title = '社区服务'
+            break
+          case '/service/takeoutList':
+            this.title = '外卖'
+            this.showBackBtn = true
+            this.showFooterTab = false
             break
           case '/home':
             this.title = '我家'
@@ -92,8 +89,16 @@
             this.show = false
             this.title = '用户中心'
             break
-          case '/stCenter':
+          case '/user/login':
+            this.show = false
+            break
+          case '/user/stCenter':
             this.title = '设置'
+            this.showBackBtn = true
+            this.showFooterTab = false
+            break
+          case '/todo':
+            this.title += '-'+this.$route.params.subTitle
             this.showBackBtn = true
             this.showFooterTab = false
             break
@@ -127,7 +132,7 @@
       }
     },
     created() {
-      // this.$router.push('/')
+      this.$router.push('/')
 
     },
     mounted() {

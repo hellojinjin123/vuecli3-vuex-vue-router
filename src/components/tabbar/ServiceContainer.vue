@@ -37,7 +37,7 @@
       items.forEach(item => {
         item.$el.addEventListener('click', ()=>{
           if(item.$attrs.cate == '外卖'){
-            this.$router.push('/')
+            this.$router.push('/service/takeoutList')
           }else{
             this.$router.push({ name: 'todo', params: {  subTitle: item.$attrs.cate }})
           }

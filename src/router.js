@@ -8,6 +8,7 @@ import UserContainer from './components/tabbar/UserContainer'
 import Login from './components/login/Login'
 import Todo from './components/Todo'
 import StCenter from './components/setting/SettingCenter'
+import TakeoutList from './components/takeout/TakeoutList'
 
 Vue.use(Router)
 
@@ -18,16 +19,17 @@ const router = new Router({
       redirect: '/index'
     },
     {
-      path: '/login',
-      component: Login
-    },
-    {
       path: '/index',
       component: IndexContainer
     },
     {
       path: '/service',
       component: ServiceContainer
+    },
+    {
+      path: '/service/takeoutList',
+      component: TakeoutList,
+      name: 'takeoutList'
     },
     {
       path: '/home',
@@ -39,16 +41,20 @@ const router = new Router({
       meta: {requiresAuth: true}
     },
     {
-      name: 'todo',
-      path: '/todo',
-      component: Todo,
+      path: '/user/login',
+      component: Login
     },
     {
+      path: '/user/stCenter',
       name: 'stCenter',
-      path: '/stCenter',
       component: StCenter,
       meta: {requiresAuth: true}
-    }
+    },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: Todo,
+    },
   ]
 })
 
@@ -62,7 +68,7 @@ router.beforeEach((to, from, next) => {
     // if not, redirect to login page.
     if (!auth.loggedIn()) {
       next({
-        path: '/login',
+        path: '/user/login',
         query: { redirect: to.fullPath }
       })
     } else {
@@ -72,5 +78,4 @@ router.beforeEach((to, from, next) => {
     next() // 确保一定要调用 next()
   }
 })
-
 export default router

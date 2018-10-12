@@ -2,7 +2,7 @@
   <div class="st">
     <div class="st-header">
       <div class="top-tool">
-        <div class="left" @click="$router.push('/stCenter')"></div>
+        <div class="left" @click="$router.push('/user/stCenter')"></div>
       </div>
       <img :src="userinfo.face" :alt="userinfo.nickname" class="face">
       <p class="nickname">{{userinfo.nickname}}</p>

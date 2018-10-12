@@ -9,7 +9,7 @@
   import List from '../subcomponents/List'
   import { Toast } from 'mint-ui';
   export default {
-    name: 'SettingCenter',
+    name: 'stCenter',
     data () {
       return {
         list: []
@@ -23,7 +23,7 @@
           position: 'bottom',
           iconClass: 'icon-success'
         })
-        this.$router.push('/login')
+        this.$router.push('/user/login')
       }
     },
     components: {
