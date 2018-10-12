@@ -31,3 +31,22 @@
   background: url(../images/x.png) no-repeat;
   background-size: contain;
 }
+/*首页图片话题分享点赞评论*/
+.icon-bt1{
+  width: 32px;
+  height: 32px;
+  background: url(../images/bt-1.png) no-repeat;
+  background-size: contain;
+}
+.icon-bt2{
+  width: 32px;
+  height: 32px;
+  background: url(../images/bt-2.png) no-repeat;
+  background-size: contain;
+}
+.icon-bt3{
+  width: 32px;
+  height: 32px;
+  background: url(../images/bt-3.png) no-repeat;
+  background-size: contain;
+}

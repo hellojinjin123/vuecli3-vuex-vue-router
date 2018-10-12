@@ -48,7 +48,7 @@ html{
 body{
   font-size: 14px;
   font-family: '宋体',tahoma, Srial, helvetica, sans-serif;
-  background-color: #eee;
+  background-color: #f3f1ec;
 }
 input::-webkit-input-placeholder {
   /* placeholder颜色  */
@@ -72,6 +72,8 @@ input::-webkit-input-placeholder {
   transition: all 1s;
   position: absolute;
 }
+
+
 /*版心*/
 .p24-container{
   //padding-top: r(48);

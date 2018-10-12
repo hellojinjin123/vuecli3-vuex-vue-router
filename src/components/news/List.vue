@@ -1,38 +1,56 @@
 <template>
   <div class="news-list">
-    <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <ul>
-        <!--这里放置真实显示的DOM内容-->
-        <li class="mui-table-view-cell mui-media" v-for="item in list" >
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" :src="getFace(item.face)">
-            <div class="mui-media-body">
-              <div class="clearfix mui-media-body-title">
-                <div class="clearfix">
-                  <span class="news-list-name">{{item.nickname}}</span><i class="icon-home"></i>
-                </div>
-                <div class="news-list-date">{{item.how_long}}</div>
-              </div>
-              <div class="news-list-type">{{item.type|changeType}}</div>
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      @load="onLoad"
 
+      :offset="1"
+      :key="type"
+    >
+      <!--数据区域-->
+      <div class="mui-table-view-cell mui-media" v-for="item in list" >
+        <a href="" @click.prevent="">
+          <img class="mui-media-object mui-pull-left" :src="getFace(item.face)" >
+          <div class="mui-media-body">
+            <div class="clearfix mui-media-body-title">
+              <div class="clearfix">
+                <span class="news-list-name">{{item.nickname}}</span><i class="icon-home"></i>
+              </div>
+              <div class="news-list-date">{{item.how_long}}</div>
             </div>
-          </a>
-          <div class="news-list-title">{{item.title}}</div>
-          <a href="" class="news-list-link"><img :src="getFirstPic(item.pic)" alt=""></a>
-        </li>
-        <!--没有更多数据-->
-        <li class="mui-table-view-cell mui-media" v-if="allLoaded">
-          <div class="icon-nomore"></div>
-          <div class="nomore">这里还是空空如也..</div>
-        </li>
-      </ul>
-    </mt-loadmore>
+            <div class="news-list-type">{{item.type|changeType}}</div>
+
+          </div>
+        </a>
+        <div class="news-list-title">{{item.title}}</div>
+        <a href="" class="news-list-link"><img v-lazy="getFirstPic(item.pic)" alt="" @click.prevent=""></a>
+        <div class="bottom">
+          <div class="bot">
+            <span class="icon-bt1"></span>
+            <span class="text">0</span>
+          </div>
+          <div class="bot">
+            <span class="icon-bt2"></span>
+            <span class="text">0</span>
+          </div>
+          <div class="bot">
+            <span class="icon-bt3"></span>
+            <span class="text">0</span>
+          </div>
+        </div>
+      </div>
+      <!--没有更多数据-->
+      <div class="mui-table-view-cell mui-media" v-if="finished">
+        <div class="icon-nomore"></div>
+        <div class="nomore">这里还是空空如也..</div>
+      </div>
+    </van-list>
   </div>
 
 </template>
 
 <script>
-  import { loadmore} from 'mint-ui'
   export default {
     name: 'newslist',
     props:['type'],
@@ -41,10 +59,27 @@
         page: 1,
         pageNum: 1,
         list: [],
-        allLoaded: false
+        loading: false,
+        finished: false,
       }
     },
     methods: {
+      onLoad() {
+        console.log('onLoad')
+        // 异步更新数据
+        setTimeout(() => {
+          this.getList((data)=>{
+            // 加载状态结束
+            this.loading = false;
+
+            // 数据全部加载完成
+            if (data.res != 1) {
+              this.finished = true;
+            }
+          })
+
+        }, 500);
+      },
       getList(callback) {
         this.$http
           .get('activity/grouplist?type='+this.type+'&p='+this.page+'&page_num='+this.pageNum)
@@ -68,17 +103,6 @@
         if(!face) return 'http://www.24jyun.com/24jia/i.php?v=2016050129022&it=1&bd=common&img=cmtx_02'
         return this.root+face
       },
-      loadBottom() {
-        // 加载更多数据
-        var that = this
-        console.log('loadone')
-        // this.getList(function (data) {
-        //   if(data.res != 1){
-        //     that.allLoaded = true;// 若数据已全部获取完毕
-        //     that.$refs.loadmore.onBottomLoaded();
-        //   }
-        // })
-      }
     },
     filters: {
       changeType(type) {
@@ -101,10 +125,23 @@
 </script>
 
 <style lang="scss" scoped>
+  .bottom{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 11px;
+    .bot{
+      display: flex;
+      align-items: center;
+      margin-left: 32px;
+      font-weight: 600;
+      color: $c2;
+    }
+  }
+
   .news-list{
     height: 100%;
     .mui-table-view-cell{
-      padding: 11px 12px;
+      padding: 11px 12px 0;
       margin-bottom: 6px;
       background: #fff;
       .icon-nomore{
