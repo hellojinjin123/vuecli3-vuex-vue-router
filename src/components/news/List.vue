@@ -9,7 +9,7 @@
       :key="type"
     >
       <!--数据区域-->
-      <div class="mui-table-view-cell mui-media" v-for="item in list" >
+      <div class="mui-table-view-cell mui-media" v-for="item in list">
         <a href="" @click.prevent="">
           <img class="mui-media-object mui-pull-left" :src="getFace(item.face)" >
           <div class="mui-media-body">
@@ -65,7 +65,6 @@
     },
     methods: {
       onLoad() {
-        console.log('onLoad')
         // 异步更新数据
         setTimeout(() => {
           this.getList((data)=>{

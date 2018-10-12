@@ -63,8 +63,8 @@
   #index-container{
     position: absolute;
     width: 100%;
-    padding-top: 48px;
-    padding-bottom: 63px;
+    padding-top: $headerH;
+    padding-bottom: $tabbarH;
     .van-tabs--line {
       padding-top: 32px;
     }

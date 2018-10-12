@@ -1,6 +1,10 @@
 /**
  * Created by jmh on 2018/10/11.
  */
+[class*='icon32'] {
+  width: 32px;
+  height: 32px;
+}
 .icon-forward{
   background: url(../images/forward.png) no-repeat;
   background-size: contain;
@@ -33,20 +37,43 @@
 }
 /*首页图片话题分享点赞评论*/
 .icon-bt1{
-  width: 32px;
-  height: 32px;
   background: url(../images/bt-1.png) no-repeat;
   background-size: contain;
 }
 .icon-bt2{
-  width: 32px;
-  height: 32px;
   background: url(../images/bt-2.png) no-repeat;
   background-size: contain;
 }
 .icon-bt3{
-  width: 32px;
-  height: 32px;
   background: url(../images/bt-3.png) no-repeat;
   background-size: contain;
 }
+/*社区服务分类图标*/
+.icon-fw01{
+  background: url(../images/fw_fwzy_01.png) no-repeat;
+  background-size: contain;
+}
+.icon-fw02{
+  background: url(../images/fw_fwzy_02.png) no-repeat;
+  background-size: contain;
+}
+.icon-fw03{
+  background: url(../images/fw_fwzy_03.png) no-repeat;
+  background-size: contain;
+}
+.icon-fw04{
+  background: url(../images/fw_fwzy_04.png) no-repeat;
+  background-size: contain;
+}
+.icon-fw05{
+  background: url(../images/fw_fwzy_05.png) no-repeat;
+  background-size: contain;
+}
+.icon-fw06{
+  background: url(../images/fw_fwzy_06.png) no-repeat;
+  background-size: contain;
+}
+.icon-fw07{
+   background: url(../images/fw_fwzy_07.png) no-repeat;
+   background-size: contain;
+ }

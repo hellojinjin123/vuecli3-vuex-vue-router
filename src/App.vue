@@ -158,7 +158,7 @@
     &.is-fixed{
       z-index: 9999;
     }
-    height: 48px;
+    height: $headerH;
     background: url(images/bg.png) center repeat-x;
     .mint-header-title{
       font-size: 16px;
@@ -167,8 +167,8 @@
   }
   .mint-tabbar{
     position: fixed;
-    height: 63px;
-    min-height: 63px;
+    height: $tabbarH;
+    min-height: $tabbarH;
     background: url(images/bg.png) center repeat-x;
     z-index: 9999;
     .mint-tab-item.is-selected {
@@ -185,7 +185,7 @@
       .mint-tab-item-icon {
         width: 24px;
         height: 24px;
-        margin: 0 auto 5px;
+        margin: 0 auto;
       }
       .mint-tab-item-label{
         display: inline-block;
