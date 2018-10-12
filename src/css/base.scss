@@ -48,7 +48,7 @@ html{
 body{
   font-size: 14px;
   font-family: '宋体',tahoma, Srial, helvetica, sans-serif;
-  background-color: #f3f1ec;
+  background-color: $bgc;
   letter-spacing: 0.5px;
 }
 input::-webkit-input-placeholder {
@@ -57,6 +57,12 @@ input::-webkit-input-placeholder {
   /* placeholder字体大小  */
   //font-size: 16px;
 }
+.text-overflow{
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+
 .p24-tac{
   text-align: center;
 }

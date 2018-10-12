@@ -27,9 +27,6 @@
       };
     },
     methods: {
-      goNext() {
-        console.log(12)
-      }
     },
     mounted() {
       // 直接点击不起效果  所以操作dom

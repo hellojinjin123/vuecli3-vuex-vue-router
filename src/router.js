@@ -9,6 +9,7 @@ import Login from './components/login/Login'
 import Todo from './components/Todo'
 import StCenter from './components/setting/SettingCenter'
 import TakeoutList from './components/takeout/TakeoutList'
+import TakeoutShop from './components/takeout/TakeoutShop'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ const router = new Router({
       path: '/service/takeoutList',
       component: TakeoutList,
       name: 'takeoutList'
+    },
+    {
+      path: '/service/takeoutList/takeoutShop',
+      component: TakeoutShop,
+      name: 'takeoutShop'
     },
     {
       path: '/home',

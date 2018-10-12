@@ -77,3 +77,7 @@
    background: url(../images/fw_fwzy_07.png) no-repeat;
    background-size: contain;
  }
+.icon-nomore{
+  background: url(../images/nomore.png) no-repeat;
+  background-size: contain;
+}

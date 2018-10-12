@@ -69,6 +69,7 @@
         this.show = true
         this.showBackBtn = false
         this.showFooterTab = true
+        this.title = ''
         // 路由个性设定
         switch (nVal) {
           case '/index':
@@ -80,6 +81,10 @@
           case '/service/takeoutList':
             this.title = '外卖'
             this.showBackBtn = true
+            this.showFooterTab = false
+            break
+          case '/service/takeoutList/takeoutShop':
+            this.show = false
             this.showFooterTab = false
             break
           case '/home':
@@ -132,8 +137,9 @@
       }
     },
     created() {
-      this.$router.push('/')
-
+      // this.$router.push('/')
+      this.$router.push(this.$route.path)
+      this.routerWatch(this.$route.path) // 手动触发路由检测path变化函数
     },
     mounted() {
       this.selected = '首页'
