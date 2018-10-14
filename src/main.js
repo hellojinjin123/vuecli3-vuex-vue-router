@@ -25,7 +25,7 @@ FastClick.attach(document.body);
 Vue.prototype.root = 'http://www.24jyun.com/apicode/i.php?img='
 
 // mint-ui
-import { Toast ,Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell,Field,Button } from 'mint-ui'
+import { Badge ,Header, Tabbar, TabItem, Swipe, SwipeItem, Loadmore, Navbar, TabContainer, TabContainerItem, Cell,Field,Button } from 'mint-ui'
 
 Vue.component(Cell.name, Cell);
 Vue.component(Header.name, Header)
@@ -39,6 +39,7 @@ Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Field.name, Field);
 Vue.component(Button.name, Button);
+Vue.component(Badge.name, Badge);
 
 // vant ui
 import Vant from 'vant';

@@ -15,8 +15,8 @@
       <van-tab title="最新">
         <List :type="'new'" :key="2"></List>
       </van-tab>
-      <van-tab title="社圈">内容 3</van-tab>
-      <van-tab title="能值">内容 4</van-tab>
+      <!--<van-tab title="社圈">内容 3</van-tab>-->
+      <!--<van-tab title="能值">内容 4</van-tab>-->
     </van-tabs>
 
 
@@ -95,6 +95,10 @@
         color: #9b9b9b;
         padding: 0;
         background-color: transparent;
+        &.van-tab--active{
+          font-weight: 600;
+          color: $c1;
+        }
       }
 
     }

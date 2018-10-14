@@ -3,7 +3,7 @@
     <!--header-->
     <mt-header fixed :title="title" v-if="show">
       <a href="" slot="left" @click.prevent="$router.go(-1)">
-        <mt-button icon="back" v-if="showBackBtn">返回</mt-button>
+        <mt-button icon="back" v-if="showBackBtn"></mt-button>
       </a>
     </mt-header>
 
@@ -69,40 +69,39 @@
         this.show = true
         this.showBackBtn = false
         this.showFooterTab = true
-        this.title = ''
         // 路由个性设定
         switch (nVal) {
-          case '/index':
+          case 'index':
             this.title = '社区广场'
             break
-          case '/service':
+          case 'service':
             this.title = '社区服务'
             break
-          case '/service/takeoutList':
+          case 'takeoutList':
             this.title = '外卖'
             this.showBackBtn = true
             this.showFooterTab = false
             break
-          case '/service/takeoutList/takeoutShop':
+          case 'takeoutShop':
             this.show = false
             this.showFooterTab = false
             break
-          case '/home':
+          case 'home':
             this.title = '我家'
             break
-          case '/user':
+          case 'user':
             this.show = false
             this.title = '用户中心'
             break
-          case '/user/login':
+          case 'login':
             this.show = false
             break
-          case '/user/stCenter':
+          case 'stCenter':
             this.title = '设置'
             this.showBackBtn = true
             this.showFooterTab = false
             break
-          case '/todo':
+          case 'todo':
             this.title += '-'+this.$route.params.subTitle
             this.showBackBtn = true
             this.showFooterTab = false
@@ -132,14 +131,14 @@
             this.flag.p24 = this.flag.love = this.flag.home = false
         }
       },
-      '$route.path' (nVal, oVal) {
+      '$route.name' (nVal, oVal) {
         this.routerWatch(nVal, oVal)
       }
     },
     created() {
       // this.$router.push('/')
       this.$router.push(this.$route.path)
-      this.routerWatch(this.$route.path) // 手动触发路由检测path变化函数
+      this.routerWatch(this.$route.name) // 手动触发路由检测path变化函数
     },
     mounted() {
       this.selected = '首页'

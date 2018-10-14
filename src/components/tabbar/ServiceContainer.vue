@@ -1,5 +1,9 @@
 <template>
   <div class="service-container">
+    <van-notice-bar
+      text="友情提醒：目前只有外卖-购物车部分开放，其他功能有待开发"
+      left-icon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
+    />
     <van-row class="cate-wrap">
       <van-col span="6" v-for="item in list">
         <van-row class="item" :cate="item.cate" ref="item">
@@ -49,6 +53,9 @@
   .service-container{
     width: 100%;
     padding-top: $headerH;
+    .van-notice-bar{
+      height: 24px;
+    }
     .cate-wrap{
       background-color: #fff;
     }

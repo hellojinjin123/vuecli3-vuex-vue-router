@@ -81,3 +81,7 @@
   background: url(../images/nomore.png) no-repeat;
   background-size: contain;
 }
+.icon-cart{
+  background: url(../images/cart.png) no-repeat;
+  background-size: contain;
+}

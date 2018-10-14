@@ -21,33 +21,38 @@ const router = new Router({
     },
     {
       path: '/index',
+      name: 'index',
       component: IndexContainer
     },
     {
       path: '/service',
+      name: 'service',
       component: ServiceContainer
     },
     {
       path: '/service/takeoutList',
-      component: TakeoutList,
-      name: 'takeoutList'
+      name: 'takeoutList',
+      component: TakeoutList
     },
     {
-      path: '/service/takeoutList/takeoutShop',
-      component: TakeoutShop,
-      name: 'takeoutShop'
+      path: '/service/takeoutList/takeoutShop/:shopId',
+      name: 'takeoutShop',
+      component: TakeoutShop
     },
     {
       path: '/home',
+      name: 'home',
       component: HomeContainer
     },
     {
       path: '/user',
+      name: 'user',
       component: UserContainer,
       meta: {requiresAuth: true}
     },
     {
       path: '/user/login',
+      name: 'login',
       component: Login
     },
     {

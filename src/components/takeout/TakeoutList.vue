@@ -2,7 +2,7 @@
   <div class="takeout-list">
     <div class="tl-items">
 
-      <div class="item" v-for="item in list" @click="getShopDetail">
+      <div class="item" v-for="item in list" @click="getShopDetail(item.shop_id)">
         <div class="left">
           <img class="l1" :src="getPic(item.photo)" alt="">
           <div class="l2">
@@ -58,8 +58,9 @@
       getPic(pic){
         return this.root+ pic
       },
-      getShopDetail() {
-        this.$router.push('/service/takeoutList/takeoutShop')
+      getShopDetail(shopId) {
+        this.$router.push({name: 'takeoutShop', params: {shopId: shopId}})
+        // this.$router.push({ path: `/service/takeoutList/takeoutShop/${shopId}` }) // -> /user/123
       }
     },
     created() {
@@ -93,7 +94,7 @@
           .l2{
             .name{
               font-size: 16px;
-              width: 130px;
+              width: 140px;
               color: #000;
             }
             .score-box{
