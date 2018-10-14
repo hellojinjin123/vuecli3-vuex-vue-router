@@ -9,8 +9,8 @@
       :key="type"
     >
       <!--数据区域-->
-      <div class="mui-table-view-cell mui-media" v-for="item in list">
-        <a href="" @click.prevent="">
+      <div class="mui-table-view-cell mui-media" v-for="item in list" @click="goToDetail(item)" >
+        <a href="javascript:;" class="">
           <img class="mui-media-object mui-pull-left" :src="getFace(item.face)" >
           <div class="mui-media-body">
             <div class="clearfix mui-media-body-title">
@@ -24,18 +24,18 @@
           </div>
         </a>
         <div class="news-list-title">{{item.title}}</div>
-        <a href="" class="news-list-link"><img v-lazy="getFirstPic(item.pic)" alt="" @click.prevent=""></a>
+        <a href="javascript:;" class="news-list-link"><img v-lazy="getFirstPic(item.pic)" alt="" ></a>
         <div class="bottom">
           <div class="bot">
-            <span class="icon-bt1"></span>
-            <span class="text">0</span>
+            <span class="icon32 icon-bt1"></span>
+            <span class="text">123</span>
           </div>
           <div class="bot">
-            <span class="icon-bt2"></span>
-            <span class="text">0</span>
+            <span class="icon32 icon-bt2"></span>
+            <span class="text">10</span>
           </div>
           <div class="bot">
-            <span class="icon-bt3"></span>
+            <span class="icon32 icon-bt3"></span>
             <span class="text">0</span>
           </div>
         </div>
@@ -102,6 +102,14 @@
         if(!face) return 'http://www.24jyun.com/24jia/i.php?v=2016050129022&it=1&bd=common&img=cmtx_02'
         return this.root+face
       },
+      goToDetail(item) {
+        if(item.type == 1){ //activity_id
+          this.$router.push({name: 'detail', params: {id: item.activity_id, type: 1}})
+          // this.$router.push({name: 'takeoutShop', params: {shopId: shopId}})
+        }else{
+          this.$router.push({name: 'detail', params: {id: item.post_id, type: 2}})
+        }
+      }
     },
     filters: {
       changeType(type) {
@@ -136,7 +144,9 @@
       color: $c2;
     }
   }
-
+  .mui-active{
+    background-color: transparent!important;
+  }
   .news-list{
     height: 100%;
     .mui-table-view-cell{

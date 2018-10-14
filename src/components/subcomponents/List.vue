@@ -29,8 +29,6 @@
     },
     methods: {
       goTodo(t) {
-        // this.$router.push({ name: '/todo', params: { subTitle: t }})
-        // this.$router.push({ path: 'todo', query: { subTitle: t }})
         this.$router.push({ name: 'todo', params: {  subTitle: t }})
       }
     }

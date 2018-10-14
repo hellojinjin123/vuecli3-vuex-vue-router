@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import auth from './auth'
 import IndexContainer from './components/tabbar/IndexContainer'
+import Detail from './components/news/Detail'
 import HomeContainer from './components/tabbar/HomeContainer'
 import ServiceContainer from './components/tabbar/ServiceContainer'
 import UserContainer from './components/tabbar/UserContainer'
@@ -23,6 +24,11 @@ const router = new Router({
       path: '/index',
       name: 'index',
       component: IndexContainer
+    },
+    {
+      path: '/index/list/detail/:id/:type',
+      name: 'detail',
+      component: Detail
     },
     {
       path: '/service',

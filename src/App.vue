@@ -46,7 +46,7 @@
         selected: '',
         title: '',
         flag:[
-          {p24: true},
+          {p24: false},
           {love: false},
           {home: false},
           {user: false},
@@ -58,6 +58,13 @@
       }
     },
     methods: {
+      tabbarFlag({p24=false, love = false, home = false, user = false} = {}) {
+        this.flag.p24 = p24
+        this.flag.love = love
+        this.flag.home = home
+        this.flag.user = user
+        console.log(this.flag)
+      },
       /*
         * header: show
         * btn in header: showBackBtn
@@ -73,25 +80,47 @@
         switch (nVal) {
           case 'index':
             this.title = '社区广场'
+            this.selected = '首页'
+            this.tabbarFlag({p24: true})
+            break
+          case 'detail':
+            if(this.$route.params.type == 1){ //activity_id
+              this.title = '活动详情'
+            }else{
+              this.title = '话题详情'
+            }
+            this.showBackBtn = true
+            this.selected = '首页'
+            this.tabbarFlag({p24: true})
             break
           case 'service':
             this.title = '社区服务'
+            this.selected = '服务'
+            this.tabbarFlag({love: true})
             break
           case 'takeoutList':
             this.title = '外卖'
             this.showBackBtn = true
             this.showFooterTab = false
+            this.selected = '服务'
+            this.tabbarFlag({love: true})
             break
           case 'takeoutShop':
             this.show = false
             this.showFooterTab = false
+            this.selected = '服务'
+            this.tabbarFlag({love: true})
             break
           case 'home':
             this.title = '我家'
+            this.selected = '我家'
+            this.tabbarFlag({home: true})
             break
           case 'user':
             this.show = false
             this.title = '用户中心'
+            this.selected = '我的'
+            this.tabbarFlag({user: true})
             break
           case 'login':
             this.show = false
@@ -141,8 +170,8 @@
       this.routerWatch(this.$route.name) // 手动触发路由检测path变化函数
     },
     mounted() {
-      this.selected = '首页'
-      this.title = '社区广场'
+      // this.selected = '首页'
+      // this.title = '社区广场'
 
 
       document.addEventListener('touchstart',function (event) {
