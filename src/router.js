@@ -48,7 +48,8 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: HomeContainer
+      component: HomeContainer,
+      meta: {requiresAuth: true}
     },
     {
       path: '/user',

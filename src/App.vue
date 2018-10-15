@@ -63,7 +63,6 @@
         this.flag.love = love
         this.flag.home = home
         this.flag.user = user
-        console.log(this.flag)
       },
       /*
         * header: show
@@ -76,6 +75,7 @@
         this.show = true
         this.showBackBtn = false
         this.showFooterTab = true
+
         // 路由个性设定
         switch (nVal) {
           case 'index':
@@ -91,6 +91,7 @@
             }
             this.showBackBtn = true
             this.selected = '首页'
+            this.showFooterTab = false
             this.tabbarFlag({p24: true})
             break
           case 'service':
@@ -115,6 +116,7 @@
             this.title = '我家'
             this.selected = '我家'
             this.tabbarFlag({home: true})
+            // this.showFooterTab = false
             break
           case 'user':
             this.show = false
@@ -138,6 +140,9 @@
           default:
             this.showBackBtn = false
         }
+        // 图片预览关闭
+        if(window.IPre) window.IPre.close()
+
       }
     },
     watch: {

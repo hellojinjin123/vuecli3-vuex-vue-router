@@ -6,7 +6,7 @@
 import Vue from 'vue'
 import router from './router'
 import store from './store'
-import './registerServiceWorker'
+// import './registerServiceWorker'
 import Resource from 'vue-resource'
 
 Vue.use(Resource)  // 安装vue-resource
@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 
 // mui
 // import mui from './assets/mui/js/mui.js'
-// import '@/assets/mui/css/mui.css'
+import '@/assets/mui/css/mui.css'
 // Vue.prototype.mui = mui
 
 // fastclick

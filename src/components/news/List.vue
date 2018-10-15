@@ -10,7 +10,7 @@
     >
       <!--数据区域-->
       <div class="mui-table-view-cell mui-media" v-for="item in list" @click="goToDetail(item)" >
-        <a href="javascript:;" class="">
+        <a href="javascript:;" >
           <img class="mui-media-object mui-pull-left" :src="getFace(item.face)" >
           <div class="mui-media-body">
             <div class="clearfix mui-media-body-title">

@@ -73,8 +73,14 @@
       },
     },
     mounted() {
-      new BScroll('.ct-cates-wrap')
-      this.scroll = new BScroll('.ct-products-scroll-wrap')
+      new BScroll('.ct-cates-wrap', {
+        // better-scroll 会将点击事件去掉，要在这里开启，同时点击在PC 会被执行两次，要在这里控制
+        tap: true
+      })
+      this.scroll = new BScroll('.ct-products-scroll-wrap', {
+        // better-scroll 会将点击事件去掉，要在这里开启，同时点击在PC 会被执行两次，要在这里控制
+        tap: true
+      })
     }
   }
 </script>

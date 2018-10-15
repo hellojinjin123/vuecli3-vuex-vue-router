@@ -56,6 +56,7 @@
 </template>
 
 <script>
+  import BScroll from 'better-scroll'
   import { mapGetters } from 'vuex'
   import Cart from '../cart/Cart'
   import FullMask from '../subcomponents/FullMask'
@@ -132,6 +133,12 @@
     created() {
       this.getShop()
       this.getList()
+    },
+    mounted() {
+      new BScroll('.cart', {
+        // better-scroll 会将点击事件去掉，要在这里开启，同时点击在PC 会被执行两次，要在这里控制
+        tap: true
+      })
     }
   }
 </script>
