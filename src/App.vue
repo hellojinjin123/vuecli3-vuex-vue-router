@@ -6,7 +6,6 @@
         <mt-button icon="back" v-if="showBackBtn"></mt-button>
       </a>
     </mt-header>
-
     <!--main container router-view-->
     <transition>
       <router-view :route="routeFlag" ref="container"></router-view>
