@@ -1,4 +1,4 @@
-# Vue-cli3脚手架基于Vue2.0+Vue-router+Vuex实现的简易社交活动分享和外卖购物车功能项目(移动端)
+# Vue-cli3脚手架基于Vue2.0+Vue-router+Vuex实现的简易社交活动分享和外卖购物车功能项目(移动端新手向)
 ## 来由
 这个小项目来源于之前开发的一个网站，主要是为公寓用户提供服务的，包括租房、社交、商户、缴费等等一系列功能。不过后来公寓计划破产了。。。后来我借用了几个接口数据，重新采用了vue相关技术还原了部分功能用于学习。
 [原网站]:http://www.24jyun.com/24jia/community/sy_square.html
@@ -25,7 +25,11 @@ vue-resource请求接口数据
 npm install
 npm run serve
 
-项目效果图
+## 项目效果图
+![avatar](https://raw.githubusercontent.com/hellojinjin123/vuecli3-vuex-vue-router/dev/public/1.gif)
+
+
+![avatar](https://raw.githubusercontent.com/hellojinjin123/vuecli3-vuex-vue-router/dev/public/2.gif)
 
 
 
