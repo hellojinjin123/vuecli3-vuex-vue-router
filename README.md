@@ -4,7 +4,7 @@
 [原网站]:http://www.24jyun.com/24jia/community/sy_square.html
 
 ## 前端架构
-rem页面结构(H5,CSS3)
+rem页面结构(H5,CSS3),vant-ui,mint-ui
 框架(基于Vue脚手架:vue-cli3)进行搭建
 数据请求处理框架(Vue-resource)
 Vue-Router进行路由处理
